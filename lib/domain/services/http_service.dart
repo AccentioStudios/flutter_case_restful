@@ -1,3 +1,3 @@
 abstract class IHttpService {
-  Future<dynamic> get(String url);
+  Future<String> get(String url);
 }

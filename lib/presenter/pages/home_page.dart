@@ -15,7 +15,7 @@ class _HomePageState extends State<HomePage> {
 
   // Repositorio que se encarga de consumir el datasource
   // Repositório responsável por consumir o datasource
-  var dogRepository = DogRepositoryImpl(DogDatasourceImpl());
+  final dogRepository = DogRepositoryImpl(DogDatasourceImpl());
 
   @override
   void initState() {
@@ -53,9 +53,9 @@ class _HomePageState extends State<HomePage> {
   }
 
   Future<void> loadDog() async {
-    // TODO: load a new dog
-    // Aqui es donde se debe llamar al metodo fetchDog del repositorio, cargar la imagen y actualizar el estado con el nuevo url
-    // Aqui é onde o método fetchDog do repositório deve ser chamado, a imagem carregada e o estado atualizado com o novo url
-    throw UnimplementedError();
+    final response = await dogRepository.fetchDog();
+    setState(() {
+      _dogUrl = response;
+    });
   }
 }
