@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restful/core/exceptions/exeption.dart';
 import 'package:restful/presenter/controller/dog_controller.dart';
 class HomePage extends StatefulWidget {
   final DogController controller;
@@ -10,12 +9,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
-
+  
   @override
   Widget build(BuildContext context) {
     void showDialogError() {
