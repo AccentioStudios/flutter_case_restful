@@ -7,7 +7,6 @@ class DogRepositoryImpl implements IDogRepository {
 
   @override
   Future<String> fetchDog() async {
-    final response = await datasource.fetchDog();
-    return response;
+    return await datasource.fetchDog();
   }
 }
