@@ -1,3 +1,5 @@
+import '../../core/utils/result.dart';
+
 abstract class IDogDatasource {
-  Future<String> fetchDog();
+  Future<Result<Exception,Map<String,dynamic>>> fetchDog();
 }

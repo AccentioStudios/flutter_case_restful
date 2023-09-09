@@ -1,18 +1,26 @@
+import 'package:restful/core/exceptions/exeption.dart';
 import 'package:restful/infra/datasources/dog_datasource.dart';
-
+import '../../core/utils/result.dart';
 import '../../domain/services/http_service.dart';
-import '../../infra/services/http_service_impl.dart';
 
 class DogDatasourceImpl implements IDogDatasource {
-  // Esta clase es la que se encarga de hacer la llamada al api
-  // Esta classe é a responsável por fazer a chamada à api
-  final IHttpService _http = HttpServiceImpl('https://dog.ceo');
+  final IHttpService service;
+  DogDatasourceImpl({
+    required this.service,
+  });
 
   @override
-  Future<String> fetchDog() {
-    // TODO: implement fetchDog.
-    // endpoint: '/api/breeds/image/random'
-    // Utiliza el metodo get de la clase HttpServiceImpl
-    throw UnimplementedError();
+  Future<Result<Exception, Map<String, dynamic>>> fetchDog() async {
+    final (exception, response) = await service.get('/api/breeds/image/random');
+
+    if (exception != null) {
+      return (exception, null);
+    }
+
+    if (response?.data == null) {
+      return (DataPersistenceException(), null);
+    }
+
+    return (exception, response?.data as Map<String, dynamic>);
   }
 }

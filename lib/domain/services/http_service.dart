@@ -1,3 +1,5 @@
+import 'package:dio/dio.dart';
+import 'package:restful/core/utils/result.dart';
 abstract class IHttpService {
-  Future<dynamic> get(String url);
+  Future<Result<Exception, Response>> get(String url);
 }

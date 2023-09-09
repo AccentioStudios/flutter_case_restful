@@ -1,3 +1,6 @@
+import 'package:restful/domain/entities/dog_picture.dart';
+import '../../core/utils/result.dart';
+
 abstract class IDogRepository {
-  Future<String> fetchDog();
+  Future<Result<Exception, DogPicture>> fetchDog();
 }
